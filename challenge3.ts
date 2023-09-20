@@ -114,7 +114,9 @@
 const getAntri = (nomor: number): any => {
   const result = new Promise((resolve: any) => {
     setTimeout(() => {
-      resolve(nomor);
+      // resolve(nomor);
+      let tampung = [nomor, "A"];
+      resolve(tampung);
     }, 1000);
   });
   return result;
@@ -154,17 +156,36 @@ const bayarTagihan = (paket: string): any => {
   return result;
 };
 
-const orderKFC = async () => {
-  try {
-    const nomor = await getAntri(2);
-    console.log(nomor);
-    const pesanan = await orderMakanan(nomor, "a");
-    console.log(pesanan);
-    let res = await bayarTagihan(pesanan);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const orderKFC = async () => {
+//   try {
+//     const nomor = await getAntri(2);
+//     console.log(nomor);
+//     const pesanan = await orderMakanan(nomor, "a");
+//     console.log(pesanan);
+//     let res = await bayarTagihan(pesanan);
+//     console.log(res);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-orderKFC();
+// orderKFC();
+
+// Cara 4: Chaining
+const result = getAntri(10);
+
+result
+  .then((nomor: any) => {
+    console.log(nomor);
+    return orderMakanan(nomor[0], nomor[1]);
+  })
+  .then((paket: string) => {
+    console.log(paket);
+    return bayarTagihan(paket);
+  })
+  .then((bil1: number) => {
+    console.log(bil1);
+  })
+  .catch((err: any) => {
+    console.log(err);
+  });
