@@ -1,6 +1,6 @@
 console.log("----------------------------PANGRAMS-------------------------");
 
-function pangrams(s: string) {
+function pangrams(s: string): string {
   const change = s.toLowerCase();
   const abc = "abcdefghijklmnopqrstuvwxyz".split("");
 
@@ -14,19 +14,21 @@ function pangrams(s: string) {
   return "answer: " + "pangrams";
 }
 
-let hasilpangrams = pangrams("Rahmat pergi ke hutan sendirian");
+let hasilpangrams = pangrams(
+  "We promptly judged antique ivory buckles for the next prize"
+);
 console.log(hasilpangrams);
 
 console.log("\n-------------------------REPEAT STRING-----------------------");
 
-function repeatedString(s: string, n: number) {
+function repeatedString(s: string, n: number): number {
   let jadi = s.split("a").length - 1;
   let maks = Math.floor(n / s.length);
   let total = jadi * maks;
   total += s.slice(0, n % s.length).split("a").length - 1;
   console.log(s);
   console.log(n);
-  return "answer: " + total;
+  return total;
 }
 
 let hasilrepeatstring = repeatedString("aba", 10);
