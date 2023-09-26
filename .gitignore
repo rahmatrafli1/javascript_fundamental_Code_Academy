@@ -1,1 +1,4 @@
 .vscode/
+belajar_backend/expressjs/node_modules/
+belajar_backend/expressjs/package-lock.json
+belajar_backend/expressjs/.env
