@@ -6,6 +6,7 @@ import about from "../controller/about.js";
 import usercust from "../controller/usercust.js";
 import updateorder from "../controller/updateorder.js";
 import insertorder from "../controller/insertorder.js";
+import joinproduct from "../controller/joinproduct.js";
 
 const router = Router();
 
@@ -19,6 +20,9 @@ router.get("/about", about.about);
 
 router.post("/insertusercust", usercust.insertusercust);
 router.post("/order", insertorder.insertorder);
-router.put("/order/:id", updateorder.updateorder);
+router.post("/orderedit", updateorder.updateorder);
+router.get("/getusercustomer", user.getusercustomer);
+router.get("/getorders", joinproduct.viewjoinproduct);
+router.get("/getjoinorders", user.viewModelsOrder);
 
 export default router;

@@ -32,7 +32,7 @@ export default class product_category extends Model {
     sequelize,
     tableName: 'product_category',
     schema: 'public',
-    timestamps: true,
+    timestamps: false,
     indexes: [
       {
         name: "product_category_pkey",

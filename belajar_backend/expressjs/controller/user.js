@@ -53,8 +53,71 @@ const deleteuser = async (req, res) => {
   try {
     const result = await models.users.destroy({
       where: { id: req.params.id },
-      returning: true
+      returning: true,
     });
+    res.send(errorHandling(result, 200, "Sukses"));
+  } catch (error) {
+    res.send(errorHandling(400, error.message));
+  }
+};
+
+const getusercustomer = async (req, res) => {
+  try {
+    // left join all
+    //const result = await models.users.findAndCountAll({
+    //include: "customers",
+    //});
+
+    // inner join all
+    // const result = await models.users.findAndCountAll({
+    //   include: { model: models.customers, as: "customers", required: true },
+    // });
+
+    // inner join only attribute
+    // const result = await models.users.findAndCountAll({
+    //   include: [
+    //     {
+    //       model: models.customers,
+    //       as: "customers",
+    //       // required: true,
+    //       // attributes: ["first_name", "last_name"],
+    //     },
+    //     {
+    //       model: models.orders,
+    //       as: "orders",
+    //       include: {
+    //         model: models.order_detail,
+    //         as: "order_details",
+    //         include: {
+    //           model: models.product,
+    //           as: "product",
+    //           include: {
+    //             model: models.product_category,
+    //             as: "category",
+    //           },
+    //         },
+    //       },
+    //     },
+    //   ],
+    //   // attributes: ["username"],
+    // });
+
+    const result = await models.users.findAll({
+      include: {
+        all: true,
+        nested: true,
+      },
+    });
+
+    res.send(errorHandling(result, 200, "sukses"));
+  } catch (error) {
+    res.send(errorHandling(400, error.message));
+  }
+};
+
+const viewModelsOrder = async (req, res) => {
+  try {
+    const result = await models.joinorders.findAll();
     res.send(errorHandling(result, 200, "Sukses"));
   } catch (error) {
     res.send(errorHandling(400, error.message));
@@ -66,4 +129,6 @@ export default {
   createuser,
   updateuser,
   deleteuser,
+  getusercustomer,
+  viewModelsOrder,
 };

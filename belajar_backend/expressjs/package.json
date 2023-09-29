@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "genModelDB": "sequelize-auto -o ./model -d eproduct -h localhost -v true -l esm -u rahmat -p 5432 -x rahmat -e postgres"
+    "genModelDB": "sequelize-auto -o ./model2 -d eproduct -h localhost -v true -l esm -u rahmat -p 5432 -x rahmat -e postgres"
   },
   "keywords": [],
   "author": "",

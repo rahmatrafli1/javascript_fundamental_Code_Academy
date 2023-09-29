@@ -36,8 +36,7 @@ export default class product extends Model {
     },
     createdat: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
+      allowNull: false
     },
     updatedat: {
       type: DataTypes.DATE,
@@ -48,7 +47,7 @@ export default class product extends Model {
     sequelize,
     tableName: 'product',
     schema: 'public',
-    timestamps: true,
+    timestamps: false,
     indexes: [
       {
         name: "product_pkey",
