@@ -7,6 +7,8 @@ import usercust from "../controller/usercust.js";
 import updateorder from "../controller/updateorder.js";
 import insertorder from "../controller/insertorder.js";
 import joinproduct from "../controller/joinproduct.js";
+import viewfunctionpaginationcust from "../controller/viewfunctionpaginationcust.js";
+import searchcustomer from "../controller/searchcustomer.js";
 
 const router = Router();
 
@@ -24,5 +26,12 @@ router.post("/orderedit", updateorder.updateorder);
 router.get("/getusercustomer", user.getusercustomer);
 router.get("/getorders", joinproduct.viewjoinproduct);
 router.get("/getjoinorders", user.viewModelsOrder);
+
+router.get(
+  "/datapaginationcustomer/:lim/:page",
+  viewfunctionpaginationcust.dataPaginationCust
+);
+
+router.get("/searchcust/:usr", searchcustomer.searchuname);
 
 export default router;
