@@ -18,7 +18,10 @@ const masuk = async (req, res) => {
             username: userdatabase.username,
             createdat: userdatabase.createdat,
           },
-          process.env.SECRET_KEY
+          process.env.SECRET_KEY,
+          {
+            expiresIn: "60s",
+          }
         );
         res.send(errorHandling(token, 200, "Sukses"));
       } else {
@@ -32,22 +35,20 @@ const masuk = async (req, res) => {
   }
 };
 
-const cektoken = async(req, res, next) => {
-    try {
-        const token = req.headers.authorization
-        if(token){
-            const verifytoken = jwt.verify(token, process.env.SECRET_KEY)
-            if(verifytoken){
-                next()
-            }else{
-                res.send(errorHandling("Token anda salah!", 200, "Error!"))
-            }
-        }else{
-            res.send(errorHandling("Tidak bisa masuk ke halaman ini", 200, "Error!"))
-        }       
-    } catch (error) {
-        res.send(errorHandling(400, error.message))
+const cektoken = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization;
+    if (token) {
+      const verifytoken = jwt.verify(token, process.env.SECRET_KEY);
+      if (verifytoken) {
+        next();
+      }
+    } else {
+      res.send(errorHandling("Tidak bisa masuk ke halaman ini", 200, "Error!"));
     }
-}
+  } catch (error) {
+    res.send(errorHandling(400, error.message));
+  }
+};
 
 export default { masuk, cektoken };
