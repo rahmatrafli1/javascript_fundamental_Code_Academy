@@ -9,11 +9,12 @@ import insertorder from "../controller/insertorder.js";
 import joinproduct from "../controller/joinproduct.js";
 import viewfunctionpaginationcust from "../controller/viewfunctionpaginationcust.js";
 import searchcustomer from "../controller/searchcustomer.js";
+import login from "../controller/login.js";
 
 const router = Router();
 
 router.get("/", index.index);
-router.get("/user", user.listuser);
+router.get("/user", login.cektoken, user.listuser);
 router.post("/user", user.createuser);
 router.put("/user/:id", user.updateuser);
 router.delete("/user/:id", user.deleteuser);
@@ -33,5 +34,7 @@ router.get(
 );
 
 router.get("/searchcust/:usr", searchcustomer.searchuname);
+
+router.post("/login", login.masuk);
 
 export default router;
