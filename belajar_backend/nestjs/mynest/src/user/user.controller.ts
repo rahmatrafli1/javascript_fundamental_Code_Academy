@@ -29,6 +29,11 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @Get('customer')
+  joincustomer() {
+    return this.userService.joincustomer();
+  }
+
   @Get('usercustomer')
   joincust() {
     return this.userService.joincust();

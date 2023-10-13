@@ -76,6 +76,16 @@ export class UserService {
     }
   }
 
+  async joincustomer() {
+    try {
+      const query = 'select * from joinusercustomer';
+      const result = await this.sequelize.query(query);
+      return errorHandling(200, 'User Berhasil ditampilkan', result);
+    } catch (error) {
+      return errorHandling(500, error.message, 'Error!');
+    }
+  }
+
   async joincust() {
     try {
       const result = await users.findAll({

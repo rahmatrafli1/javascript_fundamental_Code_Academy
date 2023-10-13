@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Home = (props) => {
+const FunctionComponent = (props) => {
   // eslint-disable-next-line
   const [counter, setCounter] = useState(0); // eslint-disable-next-line
   const [name, setName] = useState("Rahmat"); // eslint-disable-next-line
@@ -62,4 +62,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default FunctionComponent;
